@@ -1,5 +1,9 @@
 # Use this hook to configure merit parameters
 Merit.setup do |config|
+  # Enable/Disable after_filter. If disabled user has to manually call 
+  # process_merit_events inside the controller#action 
+  # config.add_after_filter = true
+
   # Check rules on each request or in background
   # config.checks_on_each_request = true
 

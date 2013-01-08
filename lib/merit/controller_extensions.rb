@@ -5,14 +5,18 @@ module Merit
   module ControllerExtensions
     def self.included(base)
       base.after_filter do |controller|
-        if rules_defined?
-          log_merit_action
-          Merit::Action.check_unprocessed if Merit.checks_on_each_request
-        end
-      end
+        process_merit_events
+      end if Merit.add_after_filter
     end
 
     private
+
+    def process_merit_events
+      if rules_defined?
+        log_merit_action
+        Merit::Action.check_unprocessed if Merit.checks_on_each_request    
+      end
+    end
 
     def log_merit_action
       Merit::Action.create(

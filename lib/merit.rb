@@ -7,6 +7,11 @@ require 'merit/model_additions'
 require 'merit/judge'
 
 module Merit
+  # Enable after_filter. If disabled user has to manually call 
+  # process_merit_events inside the controller#action 
+  mattr_accessor :add_after_filter
+  @@add_after_filter = true
+
   # Check rules on each request
   mattr_accessor :checks_on_each_request
   @@checks_on_each_request = true
