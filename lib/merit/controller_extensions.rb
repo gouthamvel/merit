@@ -24,13 +24,13 @@ module Merit
         :action_method => action_name,
         :action_value  => params[:value],
         :had_errors    => had_errors?,
-        :target_model  => controller_path,
+        :target_model  => controller_name,
         :target_id     => target_id
       ).id
     end
 
     def rules_defined?
-      action = "#{controller_path}\##{action_name}"
+      action = "#{controller_name}\##{action_name}"
       AppBadgeRules[action].present? || AppPointRules[action].present?
     end
 
