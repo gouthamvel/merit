@@ -21,6 +21,8 @@ class Sash < ActiveRecord::Base
   def add_badge(badge_id)
     bs = BadgesSash.new
     bs.badge_id = badge_id
+    bs.notified_user = false
+    bs.save
     self.badges_sashes << bs
   end
 
