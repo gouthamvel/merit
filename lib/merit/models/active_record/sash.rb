@@ -22,6 +22,7 @@ class Sash < ActiveRecord::Base
     bs = BadgesSash.new
     bs.badge_id = badge_id
     self.badges_sashes << bs
+    bs.reload # hack to make save work
     bs.notified_user = false
     bs.save
   end
